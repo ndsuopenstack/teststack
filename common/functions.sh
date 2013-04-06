@@ -239,9 +239,9 @@ function func_create_service {
                 ENDPOINTID=$(keystone --token "$ADMINTOKEN" --endpoint http://"$KEYSTONEIP":35357/v2.0 endpoint-create \
                 --region "RegionOne" \
                 --service_id "$SERVID" \
-		--publicurl "http://$SERVIP:9696/v2" \
-		--adminurl "http://$SERVIP:9696/v2" \
-		--internalurl "http://$SERVIP:9696/v2" 	| sed 's/ //g'  | grep "|id|" | cut -d'|' -f3)
+		--publicurl "http://$SERVIP:9696" \
+		--adminurl "http://$SERVIP:9696" \
+		--internalurl "http://$SERVIP:9696" 	| sed 's/ //g'  | grep "|id|" | cut -d'|' -f3)
 	fi
 	func_set_value "$SERVNAME"ENDID "$ENDPOINTID"
 	func_echo "Service $SERVNAME added and configured"
